@@ -1,2 +1,49 @@
-<!-- 機能的なことは別途、専用のjsファイルを作成、インポートして利用すること -->
-<!-- デザイン的なことは別途、専用のcssファイルを作成、インポートして利用すること -->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>黄緑電卓</title>
+    <link rel="stylesheet" href="calc.css" />
+  </head>
+  <body>
+    <main class="calculator-wrap">
+      <section class="calculator" aria-label="四則演算電卓">
+        <h1 class="title">黄緑電卓</h1>
+
+        <div class="display-area">
+          <p id="history" class="history" aria-live="polite"></p>
+          <p id="display" class="display" aria-live="assertive">0</p>
+        </div>
+
+        <div class="buttons" role="group" aria-label="電卓ボタン">
+          <button class="btn btn-function" data-action="clear">AC</button>
+          <button class="btn btn-function" data-action="backspace">⌫</button>
+          <button class="btn btn-function" data-action="percent">%</button>
+          <button class="btn btn-operator" data-action="operator" data-value="/">÷</button>
+
+          <button class="btn btn-number" data-action="number" data-value="7">7</button>
+          <button class="btn btn-number" data-action="number" data-value="8">8</button>
+          <button class="btn btn-number" data-action="number" data-value="9">9</button>
+          <button class="btn btn-operator" data-action="operator" data-value="*">×</button>
+
+          <button class="btn btn-number" data-action="number" data-value="4">4</button>
+          <button class="btn btn-number" data-action="number" data-value="5">5</button>
+          <button class="btn btn-number" data-action="number" data-value="6">6</button>
+          <button class="btn btn-operator" data-action="operator" data-value="-">−</button>
+
+          <button class="btn btn-number" data-action="number" data-value="1">1</button>
+          <button class="btn btn-number" data-action="number" data-value="2">2</button>
+          <button class="btn btn-number" data-action="number" data-value="3">3</button>
+          <button class="btn btn-operator" data-action="operator" data-value="+">＋</button>
+
+          <button class="btn btn-number span-2" data-action="number" data-value="0">0</button>
+          <button class="btn btn-number" data-action="decimal">.</button>
+          <button class="btn btn-equals" data-action="equals">=</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="calc.js"></script>
+  </body>
+</html>
