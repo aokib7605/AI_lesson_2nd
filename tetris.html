@@ -1,2 +1,33 @@
-<!-- 機能的なことは別途、専用のjsファイルを作成、インポートして利用すること -->
-<!-- デザイン的なことは別途、専用のcssファイルを作成、インポートして利用すること -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>シンプルテトリス</title>
+  <link rel="stylesheet" href="tetris.css" />
+</head>
+<body>
+  <main class="layout">
+    <section>
+      <h1>シンプルテトリス</h1>
+      <canvas id="game" width="300" height="600" aria-label="テトリスゲーム画面"></canvas>
+    </section>
+
+    <aside class="panel">
+      <p><strong>操作方法</strong></p>
+      <ul>
+        <li>← / → : 左右移動</li>
+        <li>↑ : 回転</li>
+        <li>↓ : ソフトドロップ</li>
+        <li>スペース : ハードドロップ</li>
+      </ul>
+      <p>スコア: <span id="score">0</span></p>
+      <p>消去ライン: <span id="lines">0</span></p>
+      <button id="restart">リスタート</button>
+      <p id="status" class="status"></p>
+    </aside>
+  </main>
+
+  <script src="tetris.js"></script>
+</body>
+</html>
