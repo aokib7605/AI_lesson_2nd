@@ -1,2 +1,100 @@
-<!-- 機能的なことは別途、専用のjsファイルを作成、インポートして利用すること -->
-<!-- デザイン的なことは別途、専用のcssファイルを作成、インポートして利用すること -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スマートTODOアプリ</title>
+  <link rel="stylesheet" href="todo.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>スマートTODO</h1>
+      <p>優先度・期限付きでタスク管理。自動保存で安心。</p>
+    </header>
+
+    <section class="panel" aria-label="タスク追加">
+      <form id="task-form" class="task-form">
+        <label class="field field--grow">
+          <span>タスク名</span>
+          <input id="task-title" name="title" type="text" maxlength="80" required placeholder="例: 買い物リストを作る" />
+        </label>
+
+        <label class="field">
+          <span>優先度</span>
+          <select id="task-priority" name="priority">
+            <option value="high">高</option>
+            <option value="medium" selected>中</option>
+            <option value="low">低</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>期限</span>
+          <input id="task-deadline" name="deadline" type="date" />
+        </label>
+
+        <button type="submit" class="btn btn--primary">追加</button>
+      </form>
+    </section>
+
+    <section class="panel controls" aria-label="タスク検索と絞り込み">
+      <label class="field field--grow">
+        <span>検索</span>
+        <input id="search-input" type="search" placeholder="キーワードで検索" />
+      </label>
+
+      <label class="field">
+        <span>状態</span>
+        <select id="status-filter">
+          <option value="all">すべて</option>
+          <option value="active">未完了</option>
+          <option value="completed">完了</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>並び順</span>
+        <select id="sort-by">
+          <option value="priority">優先度順</option>
+          <option value="deadline">期限が近い順</option>
+          <option value="created">作成が新しい順</option>
+        </select>
+      </label>
+
+      <button id="clear-completed" type="button" class="btn">完了を一括削除</button>
+    </section>
+
+    <section class="panel" aria-label="進捗">
+      <div class="stats">
+        <p>合計: <strong id="total-count">0</strong></p>
+        <p>未完了: <strong id="active-count">0</strong></p>
+        <p>完了: <strong id="completed-count">0</strong></p>
+      </div>
+      <div class="progress" aria-hidden="true">
+        <div id="progress-bar" class="progress__bar"></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="タスク一覧">
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-state" class="empty-state">タスクはまだありません。最初の1件を追加しましょう！</p>
+    </section>
+  </main>
+
+  <template id="task-template">
+    <li class="task-item">
+      <label class="task-item__main">
+        <input class="task-check" type="checkbox" />
+        <span class="task-title"></span>
+      </label>
+      <p class="task-meta"></p>
+      <div class="task-item__actions">
+        <button class="btn btn--danger task-delete" type="button">削除</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="todo.js" defer></script>
+</body>
+</html>
